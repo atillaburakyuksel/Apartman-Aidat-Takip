@@ -15,6 +15,7 @@ namespace Apartman_Aidat_Takip
         public Form1()
         {
             InitializeComponent();
+            
         }
         apartmanTakibiEntities db = new apartmanTakibiEntities();
         private void Form1_Load(object sender, EventArgs e)
@@ -83,19 +84,19 @@ namespace Apartman_Aidat_Takip
 
        
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            var ekle = new KisiListesi()
-            {
-                AdSoyad = yeniAdSoyad.Text,
-                TelefonNo = yeniTelefon.Text,
-                DaireNo = Convert.ToInt32(yeniDaire.Text),
+        //private void button2_Click_1(object sender, EventArgs e)
+        //{
+        //    var ekle = new KisiListesi()
+        //    {
+        //        AdSoyad = yeniAdSoyad.Text,
+        //        TelefonNo = yeniTelefon.Text,
+        //        DaireNo = Convert.ToInt32(yeniDaire.Text),
 
-            };
-            db.KisiListesis.Add(ekle);
-            db.SaveChanges();
-            yenile();
-        }
+        //    };
+        //    db.KisiListesis.Add(ekle);
+        //    db.SaveChanges();
+        //    yenile();
+        //}
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -114,5 +115,14 @@ namespace Apartman_Aidat_Takip
         {
             dataGridView1.DataSource = db.KisiListesis.Where(x => x.AdSoyad.Contains(txtAra.Text)).ToList();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+           
+            form2.Show();
+            this.Hide();
+        }
     }
 }
+    
