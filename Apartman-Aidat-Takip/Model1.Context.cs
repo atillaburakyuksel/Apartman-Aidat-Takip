@@ -26,5 +26,6 @@ namespace Apartman_Aidat_Takip
         }
     
         public virtual DbSet<KisiListesi> KisiListesis { get; set; }
+        public virtual DbSet<OdemeKisiListesi> OdemeKisiListesis { get; set; }
     }
 }

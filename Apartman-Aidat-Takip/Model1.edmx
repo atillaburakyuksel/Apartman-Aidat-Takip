@@ -13,11 +13,21 @@
           <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
           <Property Name="TelefonNo" Type="varchar" MaxLength="50" />
           <Property Name="DaireNo" Type="int" />
-          <Property Name="OdenenTutar" Type="int" />
+        </EntityType>
+        <EntityType Name="OdemeKisiListesi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="60" />
+          <Property Name="TelefonNo" Type="int" />
+          <Property Name="DaireNo" Type="int" />
+          <Property Name="OdemeTutarı" Type="int" />
           <Property Name="OdemeTarihi" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="apartmanTakibiModelStoreContainer">
           <EntitySet Name="KisiListesi" EntityType="Self.KisiListesi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OdemeKisiListesi" EntityType="Self.OdemeKisiListesi" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -25,6 +35,7 @@
       <Schema Namespace="apartmanTakibiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="apartmanTakibiEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="KisiListesis" EntityType="apartmanTakibiModel.KisiListesi" />
+          <EntitySet Name="OdemeKisiListesis" EntityType="apartmanTakibiModel.OdemeKisiListesi" />
         </EntityContainer>
         <EntityType Name="KisiListesi">
           <Key>
@@ -34,7 +45,16 @@
           <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TelefonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DaireNo" Type="Int32" />
-          <Property Name="OdenenTutar" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OdemeKisiListesi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonNo" Type="Int32" />
+          <Property Name="DaireNo" Type="Int32" />
+          <Property Name="OdemeTutarı" Type="Int32" />
           <Property Name="OdemeTarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
@@ -46,8 +66,18 @@
           <EntitySetMapping Name="KisiListesis">
             <EntityTypeMapping TypeName="apartmanTakibiModel.KisiListesi">
               <MappingFragment StoreEntitySet="KisiListesi">
+                <ScalarProperty Name="DaireNo" ColumnName="DaireNo" />
+                <ScalarProperty Name="TelefonNo" ColumnName="TelefonNo" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdemeKisiListesis">
+            <EntityTypeMapping TypeName="apartmanTakibiModel.OdemeKisiListesi">
+              <MappingFragment StoreEntitySet="OdemeKisiListesi">
                 <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
-                <ScalarProperty Name="OdenenTutar" ColumnName="OdenenTutar" />
+                <ScalarProperty Name="OdemeTutarı" ColumnName="OdemeTutarı" />
                 <ScalarProperty Name="DaireNo" ColumnName="DaireNo" />
                 <ScalarProperty Name="TelefonNo" ColumnName="TelefonNo" />
                 <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />

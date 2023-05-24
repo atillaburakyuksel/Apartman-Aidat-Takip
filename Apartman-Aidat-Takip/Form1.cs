@@ -20,18 +20,18 @@ namespace Apartman_Aidat_Takip
         apartmanTakibiEntities db = new apartmanTakibiEntities();
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource=db.KisiListesis.ToList();
+            dataGridView1.DataSource=db.OdemeKisiListesis.ToList();
         }
         
         void yenile()
         {
-            dataGridView1.DataSource = db.KisiListesis.ToList();
+            dataGridView1.DataSource = db.OdemeKisiListesis.ToList();
         }
         void sil()
         {
             int id = int.Parse(dataGridView1.CurrentRow.Cells["ID"].Value.ToString());
-            var model = db.KisiListesis.FirstOrDefault(x => x.ID == id);
-            db.KisiListesis.Remove(model);
+            var model = db.OdemeKisiListesis.FirstOrDefault(x => x.ID == id);
+            db.OdemeKisiListesis.Remove(model);
             db.SaveChanges();
             
         }
@@ -45,20 +45,21 @@ namespace Apartman_Aidat_Takip
             txtTelNo.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var entity = new KisiListesi
-            {
-                AdSoyad = txtAdSoyad.Text,
-                TelefonNo = txtTelNo.Text,
-                DaireNo=Convert.ToInt32(txtDaire.Text),
-                OdenenTutar=Convert.ToInt32(txtOdenen.Text),
-                OdemeTarihi=cmbTarih.Text,
-            };
-            db.KisiListesis.Add(entity);
-            db.SaveChanges();
-            yenile();
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    var entity = new OdemeKisiListesi
+        //    {
+        //        AdSoyad = txtAdSoyad.Text,
+        //        TelefonNo = Convert.ToInt32(txtTelNo.Text),
+        //        DaireNo=Convert.ToInt32(txtDaire.Text),
+        //        OdemeTutarı=Convert.ToInt32(txtOdenen.Text),
+        //        OdemeTarihi=Convert.ToDateTime(cmbTarih.Text),
+                
+        //    };
+        //    db.OdemeKisiListesis.Add(entity);
+        //    db.SaveChanges();
+        //    yenile();
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -72,7 +73,7 @@ namespace Apartman_Aidat_Takip
             txtAdSoyad.Text = dataGridView1.CurrentRow.Cells["AdSoyad"].Value.ToString();
             txtTelNo.Text = dataGridView1.CurrentRow.Cells["TelefonNo"].Value.ToString();
             txtDaire.Text = dataGridView1.CurrentRow.Cells["DaireNo"].Value.ToString();
-            txtOdenen.Text = dataGridView1.CurrentRow.Cells["OdenenTutar"].Value.ToString();
+            txtOdenen.Text = dataGridView1.CurrentRow.Cells["OdemeTutarı"].Value.ToString();
             cmbTarih.Text = dataGridView1.CurrentRow.Cells["OdemeTarihi"].Value.ToString();
 
         }
@@ -103,10 +104,9 @@ namespace Apartman_Aidat_Takip
             int ID = int.Parse(txtID.Text);
             var model = db.KisiListesis.FirstOrDefault(x => x.ID == ID);
             model.AdSoyad = txtAdSoyad.Text;
-            model.TelefonNo = txtTelNo.Text;
+            model.TelefonNo =txtTelNo.Text;
             model.DaireNo = Convert.ToInt32(txtDaire.Text);
-            model.OdenenTutar = Convert.ToInt32(txtOdenen.Text);
-            model.OdemeTarihi = cmbTarih.Text;
+            
             yenile();
 
         }
@@ -122,6 +122,24 @@ namespace Apartman_Aidat_Takip
            
             form2.Show();
             this.Hide();
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            var ekle = new OdemeKisiListesi()
+            {
+                AdSoyad = txtAdSoyad.Text,
+                TelefonNo = Convert.ToInt32(txtTelNo.Text),
+                DaireNo = Convert.ToInt32(txtDaire.Text),
+               
+                OdemeTutarı = Convert.ToInt32(txtOdenen.Text),
+                OdemeTarihi = cmbTarih.Text,
+
+
+            };
+            db.OdemeKisiListesis.Add(ekle);
+            db.SaveChanges();
+            yenile();
         }
     }
 }

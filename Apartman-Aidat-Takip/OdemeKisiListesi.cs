@@ -12,11 +12,13 @@ namespace Apartman_Aidat_Takip
     using System;
     using System.Collections.Generic;
     
-    public partial class KisiListesi
+    public partial class OdemeKisiListesi
     {
         public int ID { get; set; }
         public string AdSoyad { get; set; }
-        public string TelefonNo { get; set; }
+        public Nullable<int> TelefonNo { get; set; }
         public Nullable<int> DaireNo { get; set; }
+        public Nullable<int> OdemeTutarı { get; set; }
+        public string OdemeTarihi { get; set; }
     }
 }

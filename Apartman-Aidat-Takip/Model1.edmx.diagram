@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="bc0ff59325274f0ba0619cac9ee1bcf5" Name="Diagram1" >
         <EntityTypeShape EntityType="apartmanTakibiModel.KisiListesi" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="apartmanTakibiModel.OdemeKisiListesi" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
